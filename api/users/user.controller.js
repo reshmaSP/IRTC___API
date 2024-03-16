@@ -16,7 +16,7 @@ function generateUserID(username) {
 }
 function generateTrainId(username) {
   const timestamp = new Date().getTime();
-  const uniqueID = `train_${timestamp}_${username}`;
+  const uniqueID = `user_${timestamp}_${username}`;
   return uniqueID;
 }
 
@@ -128,7 +128,7 @@ module.exports = {
 
   bookTrain:(req,res)=>{
     const id = req.params.id;
-    bookTrainById(id, (err, results) => {
+    bookTrainById(id,req, (err, results) => {
       if (err) {
         console.log(err);
         return;

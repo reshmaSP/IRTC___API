@@ -85,20 +85,23 @@ module.exports = {
   },
 
   bookTrainById:(id,req,callBack)=>{
-
-
-    pool.query(`select * from train where train_id = ?}`,
+        
+    pool.query(`select * from train where train_id = ?`,
     [id],(error,results)=>{
       if (error) {
         return callBack(error);
-    }
+     }
     if (results.length == 0) {
       res.status(404).json('No data found')
    }
             const train = results[0]
-            const book_id = generateaccount()
-
-            if (train.available_seats >= req.body.no_of_seats) {
+          
+            const book_id = generateBookId()
+            console.log(book_id);
+            // console.log(train);
+            console.log(train.seat_capacity,req.body.no_of_seats);
+        
+            if (train.seat_capacity >= req.body.no_of_seats) {
                 const seats = seatNumbers(train.available_seats, req.body.no_of_seats)
 
                 console.log(seats.toString())

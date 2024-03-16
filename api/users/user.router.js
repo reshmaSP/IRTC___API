@@ -14,7 +14,7 @@ const {
 router.post("/signup", signUp);
 router.post("/login", login);
 router.get("/train/availability:?",getTrain) 
-router.post("/api/trains/:id/book",checkToken,bookTrain) 
-router.post("/trains/create",checkToken, addTrain);
+router.post("/trains/:id/book",checkToken,bookTrain) 
+router.post("/trains/create",addTrain);
 
 module.exports = router;
